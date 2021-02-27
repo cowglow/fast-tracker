@@ -5,12 +5,15 @@ import { CssBaseline } from "@material-ui/core";
 import App from "./components/app/app";
 import reportWebVitals from "./reportWebVitals";
 import theme from "./service/theme";
+import {AppStateProvider} from "./context/app-state-context";
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <App />
+      <AppStateProvider>
+          <App />
+      </AppStateProvider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
