@@ -1,6 +1,6 @@
 import React from "react";
-import {Route, Switch} from "react-router-dom";
-import {useAppState} from "../../context/app-state-context";
+import { Route, Switch } from "react-router-dom";
+import { useAppState } from "../../context/app-state-context";
 import CircleProgress from "../circular-progress/circular-progress";
 
 const AppSwitch = () => {
