@@ -1,6 +1,7 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
-import { useAppState } from "../../context/app-state-context";
+import {Route, Switch} from "react-router-dom";
+import {useAppState} from "../../context/app-state-context";
+import CircleProgress from "../circular-progress/circular-progress";
 
 const AppSwitch = () => {
   const fastConfiguration = useAppState();
@@ -8,7 +9,7 @@ const AppSwitch = () => {
     <Switch>
       <Route path="/tracker">other page</Route>
       <Route path="/">
-        <h1>main goes here</h1>
+        <CircleProgress value={87} />
         <pre>{JSON.stringify(fastConfiguration, null, 2)}</pre>
       </Route>
     </Switch>

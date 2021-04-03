@@ -14,11 +14,11 @@ const AppDrawerNavigation: React.FC<AppDrawerNavigationProps> = ({
 }) => {
   return (
     <div className={classes.root}>
-      <Link to={"/"} onClick={callback} component={MenuItem}>
-        Home
+      <Link to="/" onClick={callback}>
+        <MenuItem>Home</MenuItem>
       </Link>
-      <Link to={"/tracker"} onClick={callback} component={MenuItem}>
-        Tracker
+      <Link to="/tracker" onClick={callback}>
+        <MenuItem>Tracker</MenuItem>
       </Link>
     </div>
   );
