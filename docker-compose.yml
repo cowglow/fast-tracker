@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  fast-tracker:
+  app:
     image: node:15
     container_name: fast-tracker
     environment:
