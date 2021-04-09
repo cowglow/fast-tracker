@@ -11,9 +11,9 @@ import theme from "./service/theme";
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <CssBaseline />
       <BrowserRouter>
         <AppStateProvider>
+          <CssBaseline />
           <App />
         </AppStateProvider>
       </BrowserRouter>

@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Drawer } from "@material-ui/core";
+import AppDrawerNavigation from "../app-navigation/app-drawer-navigation";
 
 interface AppDrawerProps {
   onClose: (foo?: any) => void;
@@ -9,12 +9,7 @@ interface AppDrawerProps {
 
 const AppDrawer: React.FC<AppDrawerProps> = (props) => (
   <Drawer anchor="left" {...props}>
-    <Link to={"/"} onClick={props.onClose}>
-      Home
-    </Link>
-    <Link to={"/tracker"} onClick={props.onClose}>
-      Tracker
-    </Link>
+    <AppDrawerNavigation callback={props.onClose} />
   </Drawer>
 );
 
