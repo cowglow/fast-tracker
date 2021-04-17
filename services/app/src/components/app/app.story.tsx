@@ -1,5 +1,5 @@
 import React from "react";
-import App from "../app/app";
+import App from "./app";
 import theme from "../../service/theme";
 import { BrowserRouter } from "react-router-dom";
 import { AppStateProvider } from "../../context/app-state-context";
