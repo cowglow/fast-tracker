@@ -1,6 +1,49 @@
 version: "3.3"
 
 services:
+  mysql:
+    image: mysql:5.6.49
+    container_name: fast-tracker-mysql
+    environment:
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: fast-tracker-db
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: fast-tracker-pma
+    links:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - 8080:80
+
+  composer:
+    image: composer
+    volumes:
+      - ./services/backend:/var/www/html
+    working_dir: /var/www/html
+
+  backend:
+    image: cowglow/fast-tracker:${IMAGE_TAG}
+    container_name: fast-tracker-backend
+    build:
+      context: "services/backend"
+    environment:
+      SECRET_KEY: "environment variable: SECRET_KEY"
+    ports:
+      - "8000:80"
+    working_dir: "/backend"
+    volumes:
+      - ./services/backend/src:/var/www/html/
+    depends_on:
+      - mysql
+
   app:
     image: cowglow/fast-tracker:${IMAGE_TAG}
     build:

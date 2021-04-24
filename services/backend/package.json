@@ -1,0 +1,11 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "PHP REST",
+  "main": "index.php",
+  "scripts": {
+    "prettier": "prettier --write"
+  },
+  "author": "",
+  "license": "MIT"
+}

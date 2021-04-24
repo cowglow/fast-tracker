@@ -1,0 +1,19 @@
+{
+  "name": "cowglow/backend",
+  "description": "REST via PHP",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "cowglow",
+      "email": "cowglow@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Cowglow\\": "src/"
+    },
+    "optimize-autoloader": true
+  },
+  "require": {}
+}
