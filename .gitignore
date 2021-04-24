@@ -1,2 +1,3 @@
 /.db-local/
 /services/backend/vendor/
+/services/backend/composer.lock

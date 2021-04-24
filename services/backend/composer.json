@@ -15,5 +15,7 @@
     },
     "optimize-autoloader": true
   },
-  "require": {}
+  "require": {
+    "simplon/mysql": "^2.2"
+  }
 }

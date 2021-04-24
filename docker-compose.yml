@@ -4,11 +4,15 @@ services:
   mysql:
     image: mysql:5.6.49
     container_name: fast-tracker-mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
     environment:
       MYSQL_USER: user
       MYSQL_PASSWORD: user
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: fast-tracker-db
+    ports:
+      - 3306:3306
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -23,37 +27,30 @@ services:
     ports:
       - 8080:80
 
-  composer:
-    image: composer
-    volumes:
-      - ./services/backend:/var/www/html
-    working_dir: /var/www/html
-
   backend:
     image: cowglow/fast-tracker:${IMAGE_TAG}
-    container_name: fast-tracker-backend
     build:
       context: "services/backend"
+    container_name: fast-tracker-backend
     environment:
       SECRET_KEY: "environment variable: SECRET_KEY"
     ports:
-      - "8000:80"
+      - 8000:80
     working_dir: "/backend"
     volumes:
-      - ./services/backend/src:/var/www/html/
+      - ./services/backend:/var/www/html
     depends_on:
       - mysql
-
-  app:
-    image: cowglow/fast-tracker:${IMAGE_TAG}
-    build:
-      context: "services/app"
-    container_name: fast-tracker
-    environment:
-      SKIP_PREFLIGHT_CHECK: "true"
-    ports:
-      - "3000:3000"
-      - "6006:6006"
-    working_dir: "/app"
-    volumes:
-      - ./services/app:/app
+#  app:
+#    image: cowglow/fast-tracker:${IMAGE_TAG}
+#    build:
+#      context: "services/app"
+#    container_name: fast-tracker
+#    environment:
+#      SKIP_PREFLIGHT_CHECK: "true"
+#    ports:
+#      - "3000:3000"
+#      - "6006:6006"
+#    working_dir: "/app"
+#    volumes:
+#      - ./services/app:/app
